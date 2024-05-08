@@ -1,19 +1,20 @@
 package computers_count
 
-import (
-	"strconv"
-)
+import "strconv"
 
 var computers = []string{"компьютер", "компьютера", "компьютеров"}
 
+// ComputersCount возвращает строку вида "N компьютер", "N компьютера", "N компьютеров"
 func ComputersCount(count int) string {
 	var strCount = strconv.Itoa(count)
 	var result = strCount + " "
 
+	// 5-20 компьютеров
 	if count >= 5 && count <= 20 || count <= -5 && count >= -20 {
 		return result + computers[2]
 	}
 
+	// Последняя цифра
 	switch strCount[len(strCount)-1:] {
 	case "1":
 		result += computers[0]
